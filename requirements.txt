@@ -1,0 +1,12 @@
+tensorflow>=2.13
+numpy
+pandas
+scikit-learn
+matplotlib
+opencv-python
+Pillow
+flask
+werkzeug
+tqdm
+
+

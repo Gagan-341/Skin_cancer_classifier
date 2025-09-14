@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+
+        <!-- Uploaded Image -->
+        <img src="{{ image_url }}" alt="Uploaded Skin Lesion" class="preview">
+
+        <p><strong>Predicted Class:</strong> {{ class_name }}</p>
+        <p><strong>Probability:</strong> {{ "%.2f"|format(probability * 100) }}%</p>
+        <p><strong>Description:</strong> {{ description }}</p>
+
+        <a href="{{ url_for('index') }}" class="btn">Predict Another Image</a>
+    </div>
+</body>
+</html>
