@@ -23,7 +23,7 @@ This template expects your data organized **by class folders**. Typical HAM10000
 ```
 skin-cancer-classifier/
   data/
-    train/
+    processed/
       akiec/ ... images ...
       bcc/   ... images ...
       bkl/   ... images ...
@@ -31,16 +31,29 @@ skin-cancer-classifier/
       mel/   ... images ...
       nv/    ... images ...
       vasc/  ... images ...
-    test/            # optional: keep a clean hold-out if you have enough data
   models/            # saved models/checkpoints
+  static/
+    style.css
+  templates/
+    index.html
+    result.html
+  prepare_data.py
   train.py
   infer.py
   app.py             # simple Flask API for predictions
   utils.py
+  evaluate.py
   requirements.txt
 ```
 
 If you're using HAM10000 raw archives, you may first reorganize them into folders by label (a quick script can do this), then place them under `data/train/<label>/`.
+
+The dataset used in this project is the HAM10000 ("Human Against Machine with 10000 training images") skin lesion dataset.
+Since the dataset is too large to include in this repository, please download it from the official source:
+
+👉 HAM10000 Dataset on Kaggle: https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000/data
+
+After downloading, place it in a folder named data/ before running the training script.
 
 ---
 
@@ -92,6 +105,14 @@ Outputs land in `models/` by default:
 - `confusion_matrix.png` – confusion matrix image
 
 ---
+Pre-trained Models
+
+The trained models (best_model.keras and final_model.keras) are not uploaded here due to GitHub’s file size limitations.
+You can download them from the following link:
+
+👉 Download Pre-trained Models (Google Drive): https://drive.google.com/drive/folders/1wXAp6gxKyPjYnUSvQ0RSkOXv3reIoSIP
+
+After downloading, place the files inside the models/ directory:
 
 ## 4) Inference (single image)
 ```bash
@@ -117,7 +138,6 @@ Response looks like:
   "probs": {"akiec": 0.01, "bcc": 0.02, "...": 0.80, "...": 0.03}
 }
 ```
-
 ---
 
 ## 6) Notes & Tips
